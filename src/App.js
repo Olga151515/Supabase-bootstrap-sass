@@ -32,7 +32,7 @@ const App = () => {
          key={i}
           path={r.path} 
           element={
-            user ? (
+            !user ? (
               <LayoutPublic>
                   <r.element />
               </LayoutPublic>
