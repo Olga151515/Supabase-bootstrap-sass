@@ -21,7 +21,7 @@ export const publicRoutes = [
         element: Register,
     },
     {
-        path: '/forgotPassword',
+        path: '/forgot-password',
         element: ForgotPassword,
     },
 ];

@@ -1,3 +1,6 @@
+//0. Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "bootstrap/scss/functions";
 
@@ -9,7 +12,8 @@
 // 4. Include any default map overrides here
 
 $custom-colors: (
-    "brand": $teal-500
+    "primary": $blue-500,
+    "success": $teal-500,
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
@@ -26,6 +30,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
 @import "bootstrap/scss/helpers";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
 
 $all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
 
@@ -66,4 +72,12 @@ $utilities: map-merge(
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "bootstrap/scss/utilities/api";
+
+.active {
+  background-color: $indigo-600;
+  padding-left: $spacer !important;
+  padding-right: $spacer !important;
+  border-bottom: $spacer / 2;
+}
+
 

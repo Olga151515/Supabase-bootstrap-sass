@@ -1,13 +1,24 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { privateRoutes, publicRoutes } from './routes'
 import LayoutPrivate from './layouts/LayoutPrivate';
 import LayoutPublic from './layouts/LayoutPublic';
+import supabase from './supabaseClient';
+import Notification from './components/Notification';
+import Loading from './components/Loading';
+import AppContext from './context/AppContext';
 
 
 
 const App = () => {
-  const user = null;
+  const {appUser} = useContext(AppContext)
+  // const [isAuth, setIsAuth] = useState(false)
+  // useEffect(() => {
+  //   supabase.auth.onAuthStateChange((event, session) => {
+  //    setIsAuth(session !== null)
+  //   })
+  // }, [])
+  
   return (
     <div className='bg-light min-vh-100'>
       <Routes>
@@ -16,7 +27,7 @@ const App = () => {
          key={i}
           path={r.path} 
           element={
-            user ? (
+            appUser ? (
             <LayoutPrivate>
                 <r.element />
             </LayoutPrivate>
@@ -32,7 +43,7 @@ const App = () => {
          key={i}
           path={r.path} 
           element={
-            user ? (
+            !appUser ? (
               <LayoutPublic>
                   <r.element />
               </LayoutPublic>
@@ -42,6 +53,8 @@ const App = () => {
           } />
         ))}
       </Routes>
+      <Notification />
+      <Loading />
     </div> 
   )
 }
