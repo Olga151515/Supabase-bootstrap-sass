@@ -43,7 +43,11 @@ const App = () => {
          key={i}
           path={r.path} 
           element={
+<<<<<<< HEAD:src/App.jsx
             !appUser ? (
+=======
+            !user ? (
+>>>>>>> 6fbecd2ce7de5a739a9ab3ae17030089c89aca86:src/App.js
               <LayoutPublic>
                   <r.element />
               </LayoutPublic>
