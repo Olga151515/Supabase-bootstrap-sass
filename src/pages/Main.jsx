@@ -16,7 +16,7 @@ const Main = () => {
       <Col>
       <h2 className='fw-bold mb-0 text-primary'>My Todo list</h2>
       </Col>
-      <Col className='col-auto'>
+      <Col className='col-auto '>
         <Button 
           variant='info' 
           className='text-white fw-semibold  gap-2 d-flex'
@@ -28,7 +28,7 @@ const Main = () => {
       </Col>
     </Row>
     <Row className='py-4 d-flex'>
-      <Col>
+      <Col >
       <h3>Todo</h3>
       {activeItems.length > 0 && <TodoList list={activeItems} />}
       </Col>

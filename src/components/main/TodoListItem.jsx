@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useRef} from 'react';
 import {  ListGroup, Button, OverlayTrigger, Popover } from 'react-bootstrap';
 import {MdOutlineCheckBox,
    MdOutlineCheckBoxOutlineBlank,
@@ -12,6 +12,7 @@ import AppContext from '../../context/AppContext';
    
 
 const TodoListItem = ({item}) => {
+    const inputEl = useRef(null)
     const [popoverShow, setPopoverShow] = useState(false);
     const [editing, setEditing] = useState(false);
     const [val, setVal] = useState(item.item)
@@ -29,10 +30,16 @@ const TodoListItem = ({item}) => {
         editItem(item.id, val);
         setEditing(false);
     }
+
+    const enterEditing = () => {
+        setEditing(!editing)
+        setTimeout(() => inputEl.current.focus(), 50)
+    }
   return (
     <ListGroup.Item className='d-flex align-items-center' >
           <div className='mb-0 flex-grow-1 d-flex me-5'>
             <input 
+                ref={inputEl}
                 type="text" 
                 value={val}
                 onChange={(e) => setVal(e.target.value)} 
@@ -43,7 +50,7 @@ const TodoListItem = ({item}) => {
                 <Button 
                 variant='outline-info' 
                 size='sm' 
-                onClick={() => setEditing(!editing)}
+                onClick={enterEditing}
                >
               <MdEdit />
             </Button>
